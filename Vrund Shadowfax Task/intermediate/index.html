@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LUMINA Botanica - Luxury Organic Skincare & Holistic Wellness. Clinically proven, 100% vegan, cruelty-free botanical formulas for radiant skin.">
+  <meta name="author" content="Vrund Patel">
+  <title>LUMINA Botanica | Luxury Organic Skincare &amp; Holistic Wellness</title>
+
+  <!-- Google Fonts: Editorial Serif + Clean Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Ribbon -->
+  <div class="announcement-bar" id="announcement-bar">
+    <div class="announcement-content">
+      <span>🌿 <strong>COMPLIMENTARY BOTANICAL CLEANSER</strong> ON ORDERS OVER $60</span>
+      <span class="announcement-divider">•</span>
+      <span>FREE WORLDWIDE CARBON-NEUTRAL SHIPPING</span>
+      <span class="announcement-divider">•</span>
+      <span>USE PROMO CODE: <span class="promo-code-tag">LUMINA15</span> FOR 15% OFF</span>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="header" id="header">
+    <div class="header-container">
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <!-- Brand Identity / Logo -->
+      <a href="#hero" class="brand-logo">
+        <span class="brand-sub">Maison De</span>
+        <span class="brand-main">LUMINA</span>
+        <span class="brand-category">BOTANICA &bull; PARIS</span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#catalog" class="nav-item active">Shop All</a>
+        <a href="#catalog" class="nav-item" data-filter="serums">Serums &amp; Oils</a>
+        <a href="#catalog" class="nav-item" data-filter="cleansers">Cleansers</a>
+        <a href="#catalog" class="nav-item" data-filter="creams">Hydrating Creams</a>
+        <a href="#catalog" class="nav-item" data-filter="wellness">Body &amp; Wellness</a>
+        <a href="#philosophy" class="nav-item">Our Philosophy</a>
+        <a href="#reviews" class="nav-item">Client Reviews</a>
+      </nav>
+
+      <!-- Header Utilities (Search, Favorites, Cart) -->
+      <div class="header-actions">
+        <div class="search-box-toggle" id="search-box-toggle">
+          <button class="action-btn" id="search-btn" aria-label="Search products" title="Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <div class="search-dropdown hidden" id="search-dropdown">
+            <input type="text" id="catalog-search" placeholder="Search by ingredient or product..." aria-label="Search products">
+            <button id="clear-search-btn" class="clear-search-btn">&times;</button>
+          </div>
+        </div>
+
+        <button class="action-btn" id="quiz-btn-nav" title="Skin Routine Finder" aria-label="Routine Finder">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <span class="nav-badge-pill">Skin Quiz</span>
+        </button>
+
+        <button class="action-btn cart-btn" id="open-cart-btn" aria-label="View shopping bag" title="Shopping Bag">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count-badge" id="cart-count-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Body -->
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="hero-backdrop"></div>
+      <div class="hero-container">
+        <div class="hero-text-content">
+          <div class="hero-pill">
+            <i class="fa-solid fa-seedling"></i>
+            <span>100% Clean Bio-Fermented Botanical Skincare</span>
+          </div>
+          <h1 class="hero-heading">
+            Nature's Pure Alchemy,<br>
+            <em>Clinically Proven</em> for Radiance.
+          </h1>
+          <p class="hero-subtext">
+            Elevate your daily ritual with cold-pressed botanical actives, plant stem cells, and microbiome-loving bio-ferments designed to restore barrier vitality and timeless luminescence.
+          </p>
+          <div class="hero-actions">
+            <a href="#catalog" class="btn btn-luxury-primary">
+              <span>Explore The Collection</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <button class="btn btn-luxury-secondary" id="hero-quiz-trigger">
+              <i class="fa-regular fa-compass"></i>
+              <span>Find My Skin Ritual</span>
+            </button>
+          </div>
+
+          <!-- Brand Values Ribbon -->
+          <div class="hero-benefits">
+            <div class="benefit-item">
+              <i class="fa-solid fa-check"></i>
+              <span>Dermatologist Approved</span>
+            </div>
+            <div class="benefit-item">
+              <i class="fa-solid fa-paw"></i>
+              <span>Leaping Bunny Cruelty-Free</span>
+            </div>
+            <div class="benefit-item">
+              <i class="fa-solid fa-recycle"></i>
+              <span>100% Recyclable Glass</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Featured Bottle Visual Showcase -->
+        <div class="hero-showcase">
+          <div class="bottle-card">
+            <div class="bottle-visual">
+              <div class="serum-glow-effect"></div>
+              <div class="botanical-art">
+                <i class="fa-solid fa-spa serum-icon-svg"></i>
+                <div class="bottle-silhouette">
+                  <div class="dropper-cap"></div>
+                  <div class="dropper-neck"></div>
+                  <div class="bottle-glass">
+                    <span class="bottle-label">
+                      <strong>LUMINA</strong>
+                      <small>RADIANCE NO. 1</small>
+                      <em>30ml e 1.0 fl.oz</em>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bottle-caption">
+              <div class="bottle-caption-title">
+                <h4>Radiance Renewal Vitamin C Serum</h4>
+                <div class="star-rating">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                  <span>5.0 (284 reviews)</span>
+                </div>
+              </div>
+              <div class="bottle-caption-price">
+                <span class="price-val">$58.00</span>
+                <button class="btn-quick-add" data-quick-add="1">Quick Add</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BRAND VALUES BANNER -->
+    <section class="values-banner">
+      <div class="container values-grid">
+        <div class="val-card">
+          <div class="val-icon"><i class="fa-solid fa-leaf"></i></div>
+          <h4>Wildcrafted Botanicals</h4>
+          <p>Responsibly hand-harvested herbs from organic Alpine and Nordic sanctuaries.</p>
+        </div>
+        <div class="val-card">
+          <div class="val-icon"><i class="fa-solid fa-flask-vial"></i></div>
+          <h4>Clean Bio-Actives</h4>
+          <p>Zero parabens, sulfates, artificial dyes, microplastics, or synthetic fillers.</p>
+        </div>
+        <div class="val-card">
+          <div class="val-icon"><i class="fa-solid fa-shield-heart"></i></div>
+          <h4>Barrier First Formulation</h4>
+          <p>Physiological pH balanced to nourish, protect, and calm your skin's acid mantle.</p>
+        </div>
+        <div class="val-card">
+          <div class="val-icon"><i class="fa-solid fa-earth-americas"></i></div>
+          <h4>Zero Carbon Footprint</h4>
+          <p>Every purchase plants one tree via our partnership with Eden Reforestation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT CATALOG & FILTERING SECTION -->
+    <section class="catalog-section" id="catalog">
+      <div class="container">
+        <!-- Catalog Header -->
+        <div class="catalog-header">
+          <div class="catalog-title-group">
+            <span class="sub-heading">The Apothecary Collection</span>
+            <h2 class="main-heading">Targeted Formulas for Every Skin Need</h2>
+          </div>
+
+          <!-- Controls: Search & Sort Dropdown -->
+          <div class="catalog-controls">
+            <div class="sort-wrapper">
+              <label for="catalog-sort">Sort By:</label>
+              <select id="catalog-sort" class="catalog-sort">
+                <option value="featured">Featured Curations</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Customer Rating (Highest)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Category Tabs -->
+        <div class="catalog-tabs">
+          <button class="cat-tab active" data-category="all">All Formulations (<span id="count-all">8</span>)</button>
+          <button class="cat-tab" data-category="serums">Serums &amp; Elixirs</button>
+          <button class="cat-tab" data-category="cleansers">Gentle Cleansers</button>
+          <button class="cat-tab" data-category="creams">Hydrating Creams</button>
+          <button class="cat-tab" data-category="wellness">Holistic Wellness</button>
+        </div>
+
+        <!-- Active Filter Indicator & Results Counter -->
+        <div class="catalog-status-bar">
+          <span id="results-count" class="results-count">Showing 8 of 8 products</span>
+          <div id="active-tag-pills" class="active-tag-pills"></div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid" id="products-grid">
+          <!-- Dynamically injected via JavaScript with complete data -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SKIN ROUTINE QUIZ / INTERACTIVE BANNER -->
+    <section class="routine-quiz-section" id="quiz-section">
+      <div class="container quiz-container">
+        <div class="quiz-content-box">
+          <span class="quiz-eyebrow">Personalized Skincare Consultation</span>
+          <h2 class="quiz-title">Unsure what your skin is craving?</h2>
+          <p class="quiz-desc">
+            Take our 60-second botanical diagnostic quiz. Our holistic algorithm analyzes your barrier health, hydration level, and environmental stressors to curate your ideal morning &amp; evening ritual.
+          </p>
+          <button class="btn btn-luxury-primary" id="open-quiz-modal-btn">
+            <span>Start Skin Diagnosis</span>
+            <i class="fa-solid fa-sparkles"></i>
+          </button>
+        </div>
+        <div class="quiz-visual-box">
+          <div class="ritual-step-card">
+            <span class="step-num">01</span>
+            <strong>Purify</strong>
+            <small>Botanical Velvet Cleanser</small>
+          </div>
+          <div class="ritual-step-card active">
+            <span class="step-num">02</span>
+            <strong>Activate</strong>
+            <small>Radiance Vitamin C Serum</small>
+          </div>
+          <div class="ritual-step-card">
+            <span class="step-num">03</span>
+            <strong>Nourish</strong>
+            <small>Ceramide Barrier Soufflé</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BRAND PHILOSOPHY & INGREDIENT SPOTLIGHT -->
+    <section class="philosophy-section" id="philosophy">
+      <div class="container philosophy-grid">
+        <div class="philosophy-visual">
+          <div class="ingredient-collage">
+            <div class="collage-item collage-1">
+              <i class="fa-solid fa-cannabis"></i>
+              <span>Wild Rosehip</span>
+            </div>
+            <div class="collage-item collage-2">
+              <i class="fa-solid fa-droplet"></i>
+              <span>Snow Mushroom</span>
+            </div>
+            <div class="collage-item collage-3">
+              <i class="fa-solid fa-mortar-pestle"></i>
+              <span>Cold Ferments</span>
+            </div>
+          </div>
+        </div>
+        <div class="philosophy-text">
+          <span class="sub-heading">The Lumina Formulation Standard</span>
+          <h2 class="main-heading">Science-Backed Botanical Potency</h2>
+          <p class="philosophy-p">
+            We believe that clean skincare shouldn’t mean compromising on efficacy. Every Lumina Botanica formula blends centuries-old herbal apothecary wisdom with clinically documented biotechnology.
+          </p>
+          <p class="philosophy-p">
+            By cold-extracting bio-active plant cells without thermal degradation, our antioxidants retain their complete molecular integrity, delivering visible cellular repair and long-lasting barrier resilience.
+          </p>
+          <div class="stats-row">
+            <div class="stat-pill">
+              <strong>94%</strong>
+              <span>Observed Visibly Brighter Skin in 14 Days</span>
+            </div>
+            <div class="stat-pill">
+              <strong>98%</strong>
+              <span>Reported Strengthened Skin Barrier</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLIENT REVIEWS & SOCIAL PROOF -->
+    <section class="reviews-section" id="reviews">
+      <div class="container">
+        <div class="reviews-header text-center">
+          <span class="sub-heading">Words From Our Community</span>
+          <h2 class="main-heading">Real Rituals, Transformative Radiance</h2>
+          <div class="community-rating-pill">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <span><strong>4.9 / 5.0</strong> Average across 2,400+ verified customer reviews</span>
+          </div>
+        </div>
+
+        <div class="reviews-carousel">
+          <div class="review-quote-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="quote-text">
+              "The Radiance Renewal Vitamin C Serum completely saved my hyperpigmentation. Within three weeks my skin tone was visibly evened out and supple. Nothing else compares."
+            </p>
+            <div class="reviewer-meta">
+              <strong>Elena Rostova</strong>
+              <span>Verified Buyer &bull; London, UK</span>
+            </div>
+          </div>
+
+          <div class="review-quote-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="quote-text">
+              "The Ceramide Barrier Soufflé is pure silk in a glass jar. My skin was compromised from over-exfoliation, and this healed my moisture barrier overnight. A staple forever."
+            </p>
+            <div class="reviewer-meta">
+              <strong>Chloe Davenport</strong>
+              <span>Aesthetician &bull; Paris, FR</span>
+            </div>
+          </div>
+
+          <div class="review-quote-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="quote-text">
+              "Finally, a brand that marries luxury aesthetics with genuine dermatological results. The unboxing experience was breathtaking and the formulas are heavenly."
+            </p>
+            <div class="reviewer-meta">
+              <strong>Aarav Mehta</strong>
+              <span>Verified Buyer &bull; Mumbai, IN</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER SIGNUP -->
+    <section class="newsletter-section">
+      <div class="container newsletter-box">
+        <div class="newsletter-content">
+          <span class="sub-heading">Join The Botanical Circle</span>
+          <h3>Receive 15% Off Your First Ritual</h3>
+          <p>Subscribe for exclusive seasonal harvests, holistic skin guides, and private member events.</p>
+        </div>
+        <form class="newsletter-form" id="newsletter-form" novalidate>
+          <div class="input-with-button">
+            <input type="email" id="newsletter-email" placeholder="Enter your email address..." required>
+            <button type="submit" class="btn btn-luxury-primary">Subscribe</button>
+          </div>
+          <span class="newsletter-msg" id="newsletter-msg"></span>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- SLIDE-OVER CART DRAWER -->
+  <div class="cart-drawer-overlay hidden" id="cart-drawer-overlay">
+    <div class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-heading">
+      <div class="cart-header">
+        <div class="cart-title-wrap">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <h3 id="cart-heading">Your Ritual Bag (<span id="cart-items-total">0</span>)</h3>
+        </div>
+        <button class="cart-close-btn" id="close-cart-btn" aria-label="Close cart">&times;</button>
+      </div>
+
+      <!-- Free Shipping Progress Tracker -->
+      <div class="shipping-progress-banner">
+        <div class="shipping-status-text" id="shipping-status-text">
+          <span>Add <strong>$60.00</strong> more for Free Carbon-Neutral Shipping</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="shipping-progress-fill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Cart Items List Container -->
+      <div class="cart-body" id="cart-items-container">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Cart Footer / Pricing & Checkout Actions -->
+      <div class="cart-footer" id="cart-footer">
+        <!-- Promo Code Input -->
+        <div class="promo-box">
+          <input type="text" id="promo-input" placeholder="Promo code (e.g. LUMINA15)" uppercase>
+          <button id="apply-promo-btn" class="btn-promo">Apply</button>
+        </div>
+        <div id="promo-status" class="promo-status hidden"></div>
+
+        <!-- Calculations Breakdown -->
+        <div class="price-breakdown">
+          <div class="price-row">
+            <span>Subtotal</span>
+            <span id="cart-subtotal">$0.00</span>
+          </div>
+          <div class="price-row discount-row hidden" id="cart-discount-row">
+            <span>Promo Discount (15%)</span>
+            <span id="cart-discount">-$0.00</span>
+          </div>
+          <div class="price-row">
+            <span>Estimated Shipping</span>
+            <span id="cart-shipping">$5.00</span>
+          </div>
+          <div class="price-row">
+            <span>Estimated Sales Tax</span>
+            <span id="cart-tax">$0.00</span>
+          </div>
+          <div class="price-row total-row">
+            <strong>Order Total</strong>
+            <strong id="cart-total">$0.00</strong>
+          </div>
+        </div>
+
+        <button class="btn btn-luxury-primary btn-block" id="proceed-checkout-btn">
+          <span>Proceed To Checkout</span>
+          <i class="fa-solid fa-lock"></i>
+        </button>
+
+        <p class="secure-checkout-notice">
+          <i class="fa-solid fa-shield-halved"></i> 256-Bit Encrypted Secure Checkout &bull; 30-Day Guarantee
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT DETAIL MODAL (QUICK VIEW / INSPECTION) -->
+  <div class="product-modal-overlay hidden" id="product-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="pmodal-title">
+    <div class="product-modal-card">
+      <button class="modal-close-trigger" id="close-product-modal-btn" aria-label="Close dialog">&times;</button>
+      
+      <div class="product-modal-grid">
+        <!-- Modal Left: Visual Gallery -->
+        <div class="pmodal-visual-col">
+          <div class="pmodal-image-box" id="pmodal-image-box">
+            <span class="pmodal-badge" id="pmodal-badge">Bestseller</span>
+            <div class="pmodal-art" id="pmodal-art">
+              <!-- Art visual -->
+            </div>
+          </div>
+          <div class="pmodal-thumbnails" id="pmodal-thumbnails">
+            <button class="thumb-btn active">Formula</button>
+            <button class="thumb-btn">Texture</button>
+            <button class="thumb-btn">Packaging</button>
+          </div>
+        </div>
+
+        <!-- Modal Right: Product Details & Purchase Form -->
+        <div class="pmodal-info-col">
+          <span class="pmodal-category" id="pmodal-category">Facial Serums</span>
+          <h2 class="pmodal-title" id="pmodal-title">Radiance Renewal Vitamin C Serum</h2>
+          
+          <div class="pmodal-rating-row">
+            <div class="stars" id="pmodal-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <span class="rating-text" id="pmodal-rating-text">4.9 (284 reviews)</span>
+          </div>
+
+          <div class="pmodal-price-row">
+            <span class="pmodal-price" id="pmodal-price">$58.00</span>
+            <span class="pmodal-volume" id="pmodal-volume">50ml / 1.7 fl.oz</span>
+          </div>
+
+          <p class="pmodal-description" id="pmodal-description">
+            A high-potency antioxidant serum formulated with 15% stabilized Vitamin C, Kakadu Plum, and Ferulic Acid to illuminate uneven skin tone, boost collagen synthesis, and neutralize free radicals.
+          </p>
+
+          <!-- Accordion Tabs (How To Use, Ingredients, Sustainability) -->
+          <div class="pmodal-accordion">
+            <details class="accordion-item" open>
+              <summary>Key Active Botanicals</summary>
+              <div class="accordion-content" id="pmodal-ingredients">
+                • <strong>15% THD Ascorbate:</strong> Lipid-soluble, non-irritating Vitamin C.<br>
+                • <strong>Snow Mushroom Extract:</strong> Holds 500x its weight in moisture.<br>
+                • <strong>Wild Rosehip Seed:</strong> Natural trans-retinoic acid for cell turnover.
+              </div>
+            </details>
+
+            <details class="accordion-item">
+              <summary>How To Incorporate Into Ritual</summary>
+              <div class="accordion-content" id="pmodal-usage">
+                Smooth 3–4 drops onto freshly cleansed, damp face and neck every morning. Follow with your Ceramide Soufflé and broad-spectrum mineral SPF.
+              </div>
+            </details>
+
+            <details class="accordion-item">
+              <summary>Clean Standards &amp; Packaging</summary>
+              <div class="accordion-content">
+                Housed in UV-protective amber flint glass to protect active molecules from oxidation. 100% recyclable aluminum dropper assembly.
+              </div>
+            </details>
+          </div>
+
+          <!-- Quantity Stepper & Add to Bag -->
+          <div class="pmodal-purchase-row">
+            <div class="qty-stepper">
+              <button class="qty-btn" id="pmodal-qty-minus">-</button>
+              <span id="pmodal-qty-val">1</span>
+              <button class="qty-btn" id="pmodal-qty-plus">+</button>
+            </div>
+            <button class="btn btn-luxury-primary flex-grow" id="pmodal-add-to-cart-btn">
+              <span>Add to Ritual Bag</span>
+              <span id="pmodal-btn-price">&bull; $58.00</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL FLOW -->
+  <div class="checkout-modal-overlay hidden" id="checkout-modal-overlay">
+    <div class="checkout-modal-card">
+      <button class="modal-close-trigger" id="close-checkout-modal-btn">&times;</button>
+      
+      <!-- Checkout Step Indicators -->
+      <div class="checkout-steps">
+        <div class="chk-step active" id="step-indicator-1">1. Shipping</div>
+        <div class="chk-step" id="step-indicator-2">2. Payment</div>
+        <div class="chk-step" id="step-indicator-3">3. Confirmation</div>
+      </div>
+
+      <!-- STEP 1: Shipping Form -->
+      <div class="checkout-step-pane" id="checkout-step-1">
+        <h3>Shipping Information</h3>
+        <form id="shipping-form" class="checkout-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ship-first-name">First Name *</label>
+              <input type="text" id="ship-first-name" required placeholder="Elena">
+            </div>
+            <div class="form-group">
+              <label for="ship-last-name">Last Name *</label>
+              <input type="text" id="ship-last-name" required placeholder="Rostova">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="ship-email">Email for Order Tracking *</label>
+            <input type="email" id="ship-email" required placeholder="elena@example.com">
+          </div>
+          <div class="form-group">
+            <label for="ship-address">Street Address *</label>
+            <input type="text" id="ship-address" required placeholder="14 Botanical Avenue, Suite 4B">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ship-city">City *</label>
+              <input type="text" id="ship-city" required placeholder="London">
+            </div>
+            <div class="form-group">
+              <label for="ship-zip">Postal / Zip Code *</label>
+              <input type="text" id="ship-zip" required placeholder="SW1A 1AA">
+            </div>
+          </div>
+          <div class="form-error-alert hidden" id="shipping-error-alert">Please fill out all required shipping fields correctly.</div>
+          <button type="submit" class="btn btn-luxury-primary btn-block">Continue to Payment</button>
+        </form>
+      </div>
+
+      <!-- STEP 2: Mock Payment Method -->
+      <div class="checkout-step-pane hidden" id="checkout-step-2">
+        <h3>Select Payment Method</h3>
+        <div class="payment-options">
+          <label class="pay-method selected">
+            <input type="radio" name="pay-type" value="card" checked>
+            <span><i class="fa-regular fa-credit-card"></i> Credit / Debit Card</span>
+          </label>
+          <label class="pay-method">
+            <input type="radio" name="pay-type" value="upi">
+            <span><i class="fa-solid fa-mobile-screen"></i> UPI / Instant NetBanking</span>
+          </label>
+          <label class="pay-method">
+            <input type="radio" name="pay-type" value="apple">
+            <span><i class="fa-brands fa-apple"></i> Apple Pay / Google Pay</span>
+          </label>
+        </div>
+
+        <form id="payment-form" class="checkout-form">
+          <div class="form-group">
+            <label for="card-num">Card Number *</label>
+            <input type="text" id="card-num" placeholder="4532 &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 8920" maxlength="19" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="card-exp">Expiry (MM/YY) *</label>
+              <input type="text" id="card-exp" placeholder="08/28" maxlength="5" required>
+            </div>
+            <div class="form-group">
+              <label for="card-cvv">CVV *</label>
+              <input type="password" id="card-cvv" placeholder="•••" maxlength="4" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="card-name">Cardholder Full Name *</label>
+            <input type="text" id="card-name" placeholder="Elena Rostova" required>
+          </div>
+          <div class="checkout-summary-bar">
+            <span>Total Payable Amount:</span>
+            <strong id="chk-total-payable">$0.00</strong>
+          </div>
+          <button type="submit" class="btn btn-luxury-primary btn-block" id="pay-now-btn">Complete Purchase</button>
+        </form>
+      </div>
+
+      <!-- STEP 3: Order Confirmation -->
+      <div class="checkout-step-pane hidden" id="checkout-step-3">
+        <div class="order-success-screen">
+          <div class="success-ring"><i class="fa-solid fa-check"></i></div>
+          <h3>Thank You for Your Order</h3>
+          <p class="order-num-text">Order Confirmation: <strong id="confirmed-order-id">#LUM-89421</strong></p>
+          <p class="order-instructions">
+            A confirmation receipt and carbon-neutral tracking label have been dispatched to your email address.
+          </p>
+
+          <div class="order-recap-box" id="order-recap-box">
+            <!-- Recap populated dynamically -->
+          </div>
+
+          <button class="btn btn-luxury-primary" id="continue-shopping-btn">Continue Exploring</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKIN QUIZ MODAL -->
+  <div class="quiz-modal-overlay hidden" id="quiz-modal-overlay">
+    <div class="quiz-modal-card">
+      <button class="modal-close-trigger" id="close-quiz-btn">&times;</button>
+      <div class="quiz-step-container" id="quiz-step-container">
+        <!-- Rendered dynamically via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- LUXURY FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col brand-col">
+        <span class="brand-sub">Maison De</span>
+        <span class="brand-main">LUMINA</span>
+        <span class="brand-category">BOTANICA</span>
+        <p class="footer-tagline">
+          Clean, botanical biotechnology crafted for restorative radiance and timeless skin vitality.
+        </p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Apothecary Shop</h4>
+        <ul>
+          <li><a href="#catalog">Facial Serums &amp; Elixirs</a></li>
+          <li><a href="#catalog">Hydrating Soufflés</a></li>
+          <li><a href="#catalog">Gentle Botanical Cleansers</a></li>
+          <li><a href="#catalog">Restorative Body Oils</a></li>
+          <li><a href="#catalog">Discovery Ritual Sets</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>About &amp; Integrity</h4>
+        <ul>
+          <li><a href="#philosophy">Formulation Standards</a></li>
+          <li><a href="#philosophy">Wildcrafted Ingredients</a></li>
+          <li><a href="#philosophy">Carbon-Neutral Shipping</a></li>
+          <li><a href="#reviews">Clinical Studies &amp; Press</a></li>
+          <li><a href="#quiz-section">Skin Diagnostic Quiz</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>ShadowFox Track</h4>
+        <p class="intern-note">
+          <strong>Intermediate Level Task</strong><br>
+          Frontend Developer Internship Project by Vrund Patel.
+        </p>
+        <div class="track-navigation">
+          <a href="../beginner/index.html">← Beginner (Portfolio)</a>
+          <a href="../advanced/index.html">→ Advanced (SaaS Platform)</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <p>&copy; 2026 LUMINA Botanica Skincare S.A. All rights reserved. Designed &amp; Engineered by Vrund Patel.</p>
+        <div class="legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Ritual</a>
+          <a href="#">Accessibility Statement</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script File -->
+  <script src="script.js"></script>
+</body>
+</html>

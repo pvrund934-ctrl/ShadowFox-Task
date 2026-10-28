@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ShadowFox Frontend Developer Internship - Complete Task Hub by Vrund Patel. Featuring Beginner, Intermediate, and Advanced completed web applications.">
+  <meta name="author" content="Vrund Patel">
+  <title>ShadowFox Frontend Developer Internship | Vrund Patel Master Hub</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(20, 28, 48, 0.7);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #6366f1;
+      --cyan: #00f2fe;
+      --gold: #f59e0b;
+      --green: #10b981;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .ambient-glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      filter: blur(140px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.25;
+    }
+    .glow-left { background: #6366f1; top: -150px; left: -150px; }
+    .glow-right { background: #00f2fe; bottom: -150px; right: -150px; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+      position: relative;
+      z-index: 1;
+      flex-grow: 1;
+    }
+
+    /* Header */
+    .hub-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .org-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #818cf8;
+      margin-bottom: 1.25rem;
+    }
+    .hub-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #6366f1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hub-desc {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto 2rem;
+    }
+    .candidate-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 0.6rem 1.4rem;
+      border-radius: 9999px;
+      font-size: 0.9rem;
+    }
+    .candidate-pill strong { color: #fff; }
+    .candidate-pill span { color: var(--text-muted); }
+
+    /* Task Cards Grid */
+    .tasks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    .task-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(12px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .task-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+    .task-card.card-beginner:hover { border-color: #6366f1; }
+    .task-card.card-intermediate:hover { border-color: var(--gold); }
+    .task-card.card-advanced:hover { border-color: var(--cyan); }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .level-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+    }
+    .badge-beg { background: rgba(99, 102, 241, 0.15); color: #818cf8; }
+    .badge-int { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+    .badge-adv { background: rgba(0, 242, 254, 0.15); color: #22d3ee; }
+
+    .status-check {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--green);
+    }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .icon-beg { background: rgba(99, 102, 241, 0.15); color: #818cf8; }
+    .icon-int { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+    .icon-adv { background: rgba(0, 242, 254, 0.15); color: #00f2fe; }
+
+    .card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.45rem;
+      margin-bottom: 0.75rem;
+      color: #fff;
+    }
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+      flex-grow: 1;
+    }
+
+    .feature-highlights {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+    }
+    .feature-highlights li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .feature-highlights li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: bold;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: auto;
+    }
+    .btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: #6366f1;
+      color: #fff;
+    }
+    .btn-primary:hover { background: #4f46e5; }
+    .btn-gold {
+      background: #f59e0b;
+      color: #080c14;
+      font-weight: 700;
+    }
+    .btn-gold:hover { background: #d97706; color: #fff; }
+    .btn-cyan {
+      background: #00f2fe;
+      color: #080c14;
+      font-weight: 700;
+    }
+    .btn-cyan:hover { background: #38bdf8; color: #080c14; }
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    /* Submission Info Banner */
+    .submission-banner {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .submission-banner h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.35rem;
+    }
+    .submission-banner p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .contact-email-link {
+      color: var(--cyan);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    .hub-footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-glow glow-left"></div>
+  <div class="ambient-glow glow-right"></div>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="hub-header">
+      <div class="org-badge">
+        <i class="fa-solid fa-code"></i>
+        <span>ShadowFox Internship Submission Track</span>
+      </div>
+      <h1 class="hub-title">Frontend Developer <span class="gradient-text">Task Master Hub</span></h1>
+      <p class="hub-desc">
+        A complete, deployable suite of 3 progressive web applications developed for the ShadowFox Frontend Developer evaluation track.
+      </p>
+      <div class="candidate-pill">
+        <span>Candidate: <strong>Vrund Patel</strong></span>
+        <span>Role: <strong>Frontend Developer</strong></span>
+        <span>All 3 Tasks: <strong>100% Completed &amp; Verified</strong></span>
+      </div>
+    </header>
+
+    <!-- Tasks Grid -->
+    <main class="tasks-grid">
+      <!-- 1. Beginner Level Task -->
+      <div class="task-card card-beginner">
+        <div class="card-top">
+          <span class="level-badge badge-beg">Beginner Level</span>
+          <span class="status-check"><i class="fa-solid fa-circle-check"></i> Completed</span>
+        </div>
+        <div class="card-icon icon-beg"><i class="fa-solid fa-user-tie"></i></div>
+        <h2 class="card-title">Personal Developer Portfolio</h2>
+        <p class="card-desc">
+          Modern personal portfolio tailored for a frontend developer. Features dynamic hero typing, dark/light theme switcher with persistence, skill tabs, project modals, and a contact form with live validation.
+        </p>
+        <ul class="feature-highlights">
+          <li>Hero with dynamic typing &amp; animated stats</li>
+          <li>Dark / Light mode with localStorage</li>
+          <li>Category filterable skills &amp; projects</li>
+          <li>Rigorous contact form validation</li>
+          <li>100% mobile-first responsive architecture</li>
+        </ul>
+        <div class="card-actions">
+          <a href="beginner/index.html" class="btn btn-primary" target="_self">
+            <span>Launch Project</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+          <a href="beginner/README.md" class="btn btn-outline" target="_blank">Docs</a>
+        </div>
+      </div>
+
+      <!-- 2. Intermediate Level Task -->
+      <div class="task-card card-intermediate">
+        <div class="card-top">
+          <span class="level-badge badge-int">Intermediate Level</span>
+          <span class="status-check"><i class="fa-solid fa-circle-check"></i> Completed</span>
+        </div>
+        <div class="card-icon icon-int"><i class="fa-solid fa-spa"></i></div>
+        <h2 class="card-title">LUMINA Botanica Storefront</h2>
+        <p class="card-desc">
+          Brand-focused e-commerce storefront for a luxury botanical skincare &amp; wellness brand. Features live catalog filtering, search, product inspection modals, slide-over cart drawer, and checkout simulator.
+        </p>
+        <ul class="feature-highlights">
+          <li>Luxury botanical brand design system</li>
+          <li>Live catalog filtering &amp; real-time search</li>
+          <li>Interactive product detail inspection modal</li>
+          <li>Slide-over cart with free shipping bar</li>
+          <li>Multi-step checkout &amp; skin diagnostic quiz</li>
+        </ul>
+        <div class="card-actions">
+          <a href="intermediate/index.html" class="btn btn-gold" target="_self">
+            <span>Launch Project</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+          <a href="intermediate/README.md" class="btn btn-outline" target="_blank">Docs</a>
+        </div>
+      </div>
+
+      <!-- 3. Advanced Level Task -->
+      <div class="task-card card-advanced">
+        <div class="card-top">
+          <span class="level-badge badge-adv">Advanced Level</span>
+          <span class="status-check"><i class="fa-solid fa-circle-check"></i> Completed</span>
+        </div>
+        <div class="card-icon icon-adv"><i class="fa-solid fa-network-wired"></i></div>
+        <h2 class="card-title">PulseFlow AI Cloud Console</h2>
+        <p class="card-desc">
+          Client-style enterprise platform built from a formal client requirement brief. Includes live HTML5 canvas telemetry charts, an interactive visual DAG pipeline runner, infrastructure ROI calculator, and security audit log.
+        </p>
+        <ul class="feature-highlights">
+          <li>Interactive HTML5 Canvas telemetry curve chart</li>
+          <li>Visual 4-stage DAG workflow simulation</li>
+          <li>Dynamic ROI &amp; compute cost slider calculator</li>
+          <li>Security audit table with instant CSV export</li>
+          <li>Global Command Palette (<kbd>Ctrl+K</kbd>)</li>
+        </ul>
+        <div class="card-actions">
+          <a href="advanced/index.html" class="btn btn-cyan" target="_self">
+            <span>Launch Project</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+          <a href="advanced/README.md" class="btn btn-outline" target="_blank">Docs</a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Submission Process Guide Banner -->
+    <section class="submission-banner">
+      <div>
+        <h3>Submission Process Notice (ShadowFox Task Brief)</h3>
+        <p>
+          As specified in the internship brief: Submit deployed links to <a href="mailto:g1doubts@shadowfox.in" class="contact-email-link">g1doubts@shadowfox.in</a> along with your candidate details.
+        </p>
+      </div>
+      <div>
+        <a href="mailto:g1doubts@shadowfox.in?subject=ShadowFox%20Frontend%20Internship%20Submission%20-%20Vrund%20Patel" class="btn btn-primary">
+          <i class="fa-regular fa-paper-plane"></i>
+          <span>Email ShadowFox Mentors</span>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <footer class="hub-footer">
+    <div class="container">
+      <p>&copy; 2026 Vrund Patel. Completed for the ShadowFox Frontend Developer Internship track. Pure HTML5, CSS3 &amp; JavaScript.</p>
+    </div>
+  </footer>
+</body>
+</html>

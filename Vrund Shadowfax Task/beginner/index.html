@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vrund Patel - Modern Frontend Developer & Creative UI Engineer Portfolio. Building high-performance, accessible, and stunning digital experiences.">
+  <meta name="author" content="Vrund Patel">
+  <title>Vrund Patel | Frontend Developer & UI Engineer</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="ambient-glow glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow glow-2" aria-hidden="true"></div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo" aria-label="Home">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-name">Vrund</span>
+        <span class="logo-accent">.dev</span>
+        <span class="logo-bracket">/&gt;</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="nav-links" id="nav-links">
+        <a href="#hero" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="#about" class="nav-link"><i class="fa-solid fa-user"></i> About</a>
+        <a href="#skills" class="nav-link"><i class="fa-solid fa-code"></i> Skills</a>
+        <a href="#projects" class="nav-link"><i class="fa-solid fa-laptop-code"></i> Projects</a>
+        <a href="#contact" class="nav-link"><i class="fa-solid fa-envelope"></i> Contact</a>
+      </nav>
+
+      <!-- Nav Actions (Theme Toggle & CTA) -->
+      <div class="nav-actions">
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark/light theme" title="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="#contact" class="btn btn-sm btn-primary nav-cta">Let's Talk</a>
+        
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-toggle" class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span>Available for Frontend Roles & Freelance</span>
+          </div>
+          
+          <h1 class="hero-title">
+            Hi, I'm <span class="gradient-text">Vrund Patel</span><br>
+            <span class="typing-container">
+              <span id="typing-text"></span><span class="typing-cursor">|</span>
+            </span>
+          </h1>
+
+          <p class="hero-description">
+            I craft responsive, pixel-perfect, and highly engaging web applications with modern HTML5, CSS3, JavaScript, and cutting-edge UI/UX architectures. Focused on blazing performance, intuitive interactions, and clean code.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-primary">
+              <span>Explore My Work</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              <i class="fa-regular fa-paper-plane"></i>
+              <span>Get in Touch</span>
+            </a>
+            <button id="download-cv-btn" class="btn btn-outline" title="Download Vrund's Resume">
+              <i class="fa-solid fa-file-arrow-down"></i>
+              <span>Download CV</span>
+            </button>
+          </div>
+
+          <!-- Quick Metrics Banner -->
+          <div class="hero-stats">
+            <div class="stat-card">
+              <span class="stat-num" data-target="15">0</span><span class="stat-plus">+</span>
+              <span class="stat-label">Projects Completed</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-card">
+              <span class="stat-num" data-target="99">0</span><span class="stat-plus">%</span>
+              <span class="stat-label">Client Satisfaction</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-card">
+              <span class="stat-num" data-target="100">0</span><span class="stat-plus">%</span>
+              <span class="stat-label">Responsive & Accessible</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual / Tech Floating Card -->
+        <div class="hero-visual">
+          <div class="visual-wrapper">
+            <div class="avatar-ring"></div>
+            <div class="avatar-card">
+              <div class="code-editor-header">
+                <span class="editor-dot dot-red"></span>
+                <span class="editor-dot dot-yellow"></span>
+                <span class="editor-dot dot-green"></span>
+                <span class="editor-filename">DeveloperProfile.ts</span>
+              </div>
+              <pre class="code-snippet"><code><span class="token-keyword">const</span> <span class="token-var">developer</span> = {
+  <span class="token-prop">name</span>: <span class="token-string">"Vrund Patel"</span>,
+  <span class="token-prop">role</span>: <span class="token-string">"Frontend Engineer"</span>,
+  <span class="token-prop">passion</span>: [<span class="token-string">"Clean Code"</span>, <span class="token-string">"Modern UI"</span>],
+  <span class="token-prop">status</span>: <span class="token-string">"Ready to Build 🚀"</span>,
+  <span class="token-prop">skills</span>: {
+    <span class="token-prop">core</span>: [<span class="token-string">"HTML5"</span>, <span class="token-string">"CSS3/SCSS"</span>, <span class="token-string">"JS ES6+"</span>],
+    <span class="token-prop">frameworks</span>: [<span class="token-string">"React"</span>, <span class="token-string">"Tailwind"</span>, <span class="token-string">"Vite"</span>],
+    <span class="token-prop">focus</span>: <span class="token-string">"Performance & A11y"</span>
+  }
+};</code></pre>
+            </div>
+
+            <!-- Floating Badges -->
+            <div class="floating-badge badge-top-right">
+              <i class="fa-brands fa-html5 badge-icon color-html"></i>
+              <div>
+                <strong>HTML5 / CSS3</strong>
+                <small>Semantic & Responsive</small>
+              </div>
+            </div>
+            
+            <div class="floating-badge badge-bottom-left">
+              <i class="fa-brands fa-js badge-icon color-js"></i>
+              <div>
+                <strong>JavaScript ES6+</strong>
+                <small>Interactive & Fast</small>
+              </div>
+            </div>
+
+            <div class="floating-badge badge-middle-right">
+              <i class="fa-solid fa-wand-magic-sparkles badge-icon color-ui"></i>
+              <div>
+                <strong>UI/UX Design</strong>
+                <small>Figma to Code</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="section-subtitle">Get To Know Me</p>
+          <h2 class="section-title">About <span class="gradient-text">My Journey</span></h2>
+          <div class="title-underline"></div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-image-col">
+            <div class="about-card-container">
+              <div class="profile-illustration">
+                <div class="illustration-avatar">
+                  <i class="fa-solid fa-code-commit main-avatar-icon"></i>
+                </div>
+                <div class="experience-tag">
+                  <i class="fa-solid fa-trophy"></i>
+                  <span>Dedicated Frontend Intern</span>
+                </div>
+              </div>
+              <div class="about-highlights">
+                <div class="highlight-item">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <div>
+                    <h4>Education</h4>
+                    <p>Computer Science & Engineering</p>
+                  </div>
+                </div>
+                <div class="highlight-item">
+                  <i class="fa-solid fa-compass-drafting"></i>
+                  <div>
+                    <h4>Specialization</h4>
+                    <p>Web Development & Design Systems</p>
+                  </div>
+                </div>
+                <div class="highlight-item">
+                  <i class="fa-solid fa-globe"></i>
+                  <div>
+                    <h4>Language Stack</h4>
+                    <p>English, Hindi, Gujarati</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-content-col">
+            <h3 class="about-heading">Transforming Creative Concepts into Seamless Frontend Realities</h3>
+            <p class="about-text">
+              I am an enthusiastic frontend developer passionate about building interfaces that are both aesthetically compelling and structurally resilient. My journey began with an insatiable curiosity about how websites bridge human intention with software logic.
+            </p>
+            <p class="about-text">
+              Today, I specialize in crafting fluid, responsive user experiences that adapt effortlessly across mobile phones, tablets, and desktop workstations. Every project I build emphasizes semantic HTML5 standards, modular CSS architectures, accessible interactions (WCAG), and optimized JavaScript.
+            </p>
+
+            <div class="about-pillars">
+              <div class="pillar-card">
+                <div class="pillar-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                <h4>100% Mobile First</h4>
+                <p>Ensuring every breakpoint functions with fluid elegance.</p>
+              </div>
+              <div class="pillar-card">
+                <div class="pillar-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+                <h4>Speed & Performance</h4>
+                <p>Lean assets, lazy loading, and micro-optimizations.</p>
+              </div>
+              <div class="pillar-card">
+                <div class="pillar-icon"><i class="fa-solid fa-universal-access"></i></div>
+                <h4>Accessibility Mindset</h4>
+                <p>Inclusive markup and keyboard-friendly navigation.</p>
+              </div>
+            </div>
+
+            <div class="about-socials">
+              <span class="social-label">Connect with me:</span>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="mailto:vrund.dev@example.com" class="social-link" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="section-subtitle">Technical Proficiency</p>
+          <h2 class="section-title">Skills &amp; <span class="gradient-text">Toolbox</span></h2>
+          <div class="title-underline"></div>
+          <p class="section-desc">A curated set of technologies and developer tools I leverage to deliver modern web products.</p>
+        </div>
+
+        <!-- Skills Category Tabs -->
+        <div class="skills-filter-tabs">
+          <button class="skill-tab-btn active" data-filter="all">All Skills</button>
+          <button class="skill-tab-btn" data-filter="frontend">Core Frontend</button>
+          <button class="skill-tab-btn" data-filter="styling">Styling &amp; Design</button>
+          <button class="skill-tab-btn" data-filter="tools">Tools &amp; Workflow</button>
+        </div>
+
+        <div class="skills-grid" id="skills-grid">
+          <!-- Skill: HTML5 -->
+          <div class="skill-card" data-category="frontend">
+            <div class="skill-top">
+              <div class="skill-icon-wrap html-icon"><i class="fa-brands fa-html5"></i></div>
+              <span class="skill-percentage">95%</span>
+            </div>
+            <h4 class="skill-name">HTML5 &amp; Semantics</h4>
+            <p class="skill-info">Semantic structure, SEO metadata, ARIA accessibility, modern layout tags.</p>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="--level: 95%;"></div></div>
+          </div>
+
+          <!-- Skill: CSS3 -->
+          <div class="skill-card" data-category="styling">
+            <div class="skill-top">
+              <div class="skill-icon-wrap css-icon"><i class="fa-brands fa-css3-alt"></i></div>
+              <span class="skill-percentage">92%</span>
+            </div>
+            <h4 class="skill-name">Modern CSS3 &amp; Flex/Grid</h4>
+            <p class="skill-info">Custom properties, CSS Grid, Flexbox, keyframe animations, glassmorphism.</p>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="--level: 92%;"></div></div>
+          </div>
+
+          <!-- Skill: JavaScript -->
+          <div class="skill-card" data-category="frontend">
+            <div class="skill-top">
+              <div class="skill-icon-wrap js-icon"><i class="fa-brands fa-js"></i></div>
+              <span class="skill-percentage">88%</span>
+            </div>
+            <h4 class="skill-name">JavaScript (ES6+)</h4>
+            <p class="skill-info">Async/await, DOM manipulation, Fetch API, modular closures, Event delegation.</p>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="--level: 88%;"></div></div>
+          </div>
+
+          <!-- Skill: Responsive Design -->
+          <div class="skill-card" data-category="styling">
+            <div class="skill-top">
+              <div class="skill-icon-wrap responsive-icon"><i class="fa-solid fa-laptop-mobile"></i></div>
+              <span class="skill-percentage">95%</span>
+            </div>
+            <h4 class="skill-name">Responsive Web Design</h4>
+            <p class="skill-info">Mobile-first paradigm, fluid typography (clamp), viewport queries, touch targets.</p>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="--level: 95%;"></div></div>
+          </div>
+
+          <!-- Skill: Git & Version Control -->
+          <div class="skill-card" data-category="tools">
+            <div class="skill-top">
+              <div class="skill-icon-wrap git-icon"><i class="fa-brands fa-git-alt"></i></div>
+              <span class="skill-percentage">86%</span>
+            </div>
+            <h4 class="skill-name">Git &amp; GitHub</h4>
+            <p class="skill-info">Branch management, pull requests, semantic commits, team collaboration.</p>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="--level: 86%;"></div></div>
+          </div>
+
+          <!-- Skill: React Basics -->
+          <div class="skill-card" data-category="frontend">
+            <div class="skill-top">
+              <div class="skill-icon-wrap react-icon"><i class="fa-brands fa-react"></i></div>
+              <span class="skill-percentage">82%</span>
+            </div>
+            <h4 class="skill-name">React.js &amp; Components</h4>
+            <p class="skill-info">Functional components, hooks (useState, useEffect), props, modular UI architecture.</p>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="--level: 82%;"></div></div>
+          </div>
+
+          <!-- Skill: UI/UX & Figma -->
+          <div class="skill-card" data-category="styling">
+            <div class="skill-top">
+              <div class="skill-icon-wrap figma-icon"><i class="fa-brands fa-figma"></i></div>
+              <span class="skill-percentage">85%</span>
+            </div>
+            <h4 class="skill-name">Figma &amp; Wireframing</h4>
+            <p class="skill-info">Prototyping, converting design mockups to pixel-accurate code, design tokens.</p>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="--level: 85%;"></div></div>
+          </div>
+
+          <!-- Skill: Web Performance & DevTools -->
+          <div class="skill-card" data-category="tools">
+            <div class="skill-top">
+              <div class="skill-icon-wrap devtools-icon"><i class="fa-solid fa-gauge-high"></i></div>
+              <span class="skill-percentage">89%</span>
+            </div>
+            <h4 class="skill-name">Performance &amp; DevTools</h4>
+            <p class="skill-info">Lighthouse auditing, Core Web Vitals, asset minification, cross-browser debugging.</p>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" style="--level: 89%;"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="section-subtitle">Portfolio Showcases</p>
+          <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+          <div class="title-underline"></div>
+          <p class="section-desc">A selection of frontend applications highlighting creative interfaces, robust architectures, and responsive implementations.</p>
+        </div>
+
+        <!-- Project Filter Buttons -->
+        <div class="project-filters">
+          <button class="project-filter-btn active" data-filter="all">All Projects</button>
+          <button class="project-filter-btn" data-filter="ecommerce">E-Commerce</button>
+          <button class="project-filter-btn" data-filter="saas">SaaS &amp; Dashboards</button>
+          <button class="project-filter-btn" data-filter="interactive">Interactive Apps</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projects-grid">
+          <!-- Project 1: Lumina Botanica -->
+          <article class="project-card" data-category="ecommerce">
+            <div class="project-thumb">
+              <div class="project-mockup mockup-skincare">
+                <div class="mockup-header">
+                  <span class="dot-sm"></span><span class="dot-sm"></span><span class="dot-sm"></span>
+                  <span class="mockup-title">luminabotanica.store</span>
+                </div>
+                <div class="mockup-body">
+                  <div class="skincare-banner">
+                    <span class="tag-organic"><i class="fa-solid fa-leaf"></i> Organic Care</span>
+                    <h4>Botanical Radiance Elixir</h4>
+                    <span class="price-badge">$48.00</span>
+                  </div>
+                </div>
+              </div>
+              <div class="project-overlay">
+                <button class="btn btn-sm btn-light open-modal-btn" data-project="0">
+                  <i class="fa-solid fa-expand"></i> Quick Preview
+                </button>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-tags">
+                <span class="pill-tag">E-Commerce</span>
+                <span class="pill-tag">JavaScript</span>
+                <span class="pill-tag">Cart Flow</span>
+              </div>
+              <h3 class="project-title">LUMINA Botanical Skincare Storefront</h3>
+              <p class="project-desc">A brand-focused wellness storefront featuring live catalog filtering, detailed product modals, an interactive slide-out cart drawer, and order checkout flow.</p>
+              <div class="project-links">
+                <a href="../intermediate/index.html" class="link-btn primary" title="View Intermediate Project">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                </a>
+                <button class="link-btn secondary open-modal-btn" data-project="0" title="Project Details">
+                  <i class="fa-solid fa-circle-info"></i> Details
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: PulseFlow Cloud -->
+          <article class="project-card" data-category="saas">
+            <div class="project-thumb">
+              <div class="project-mockup mockup-saas">
+                <div class="mockup-header">
+                  <span class="dot-sm"></span><span class="dot-sm"></span><span class="dot-sm"></span>
+                  <span class="mockup-title">pulseflow.io/dashboard</span>
+                </div>
+                <div class="mockup-body">
+                  <div class="saas-preview-chart">
+                    <div class="chart-bars">
+                      <span style="height: 40%"></span>
+                      <span style="height: 65%"></span>
+                      <span style="height: 85%"></span>
+                      <span style="height: 60%"></span>
+                      <span style="height: 95%"></span>
+                    </div>
+                    <div class="chart-info">
+                      <small>Live Fleet Load</small>
+                      <strong>99.98% Uptime</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-overlay">
+                <button class="btn btn-sm btn-light open-modal-btn" data-project="1">
+                  <i class="fa-solid fa-expand"></i> Quick Preview
+                </button>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-tags">
+                <span class="pill-tag">SaaS Platform</span>
+                <span class="pill-tag">Data Visuals</span>
+                <span class="pill-tag">Automation</span>
+              </div>
+              <h3 class="project-title">PulseFlow Enterprise AI &amp; Cloud Portal</h3>
+              <p class="project-desc">Client-style frontend dashboard with live telemetry canvas charts, visual workflow pipeline runner, real-time ROI calculator, and security audit log.</p>
+              <div class="project-links">
+                <a href="../advanced/index.html" class="link-btn primary" title="View Advanced Project">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                </a>
+                <button class="link-btn secondary open-modal-btn" data-project="1" title="Project Details">
+                  <i class="fa-solid fa-circle-info"></i> Details
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: TaskMaster Kanban -->
+          <article class="project-card" data-category="interactive">
+            <div class="project-thumb">
+              <div class="project-mockup mockup-kanban">
+                <div class="mockup-header">
+                  <span class="dot-sm"></span><span class="dot-sm"></span><span class="dot-sm"></span>
+                  <span class="mockup-title">taskflow.app</span>
+                </div>
+                <div class="mockup-body kanban-mock">
+                  <div class="mock-col">
+                    <div class="mock-task-card">Sprint Planning</div>
+                    <div class="mock-task-card">Auth Refactor</div>
+                  </div>
+                  <div class="mock-col">
+                    <div class="mock-task-card active">Design Review</div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-overlay">
+                <button class="btn btn-sm btn-light open-modal-btn" data-project="2">
+                  <i class="fa-solid fa-expand"></i> Quick Preview
+                </button>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-tags">
+                <span class="pill-tag">Productivity</span>
+                <span class="pill-tag">Drag &amp; Drop</span>
+                <span class="pill-tag">LocalStorage</span>
+              </div>
+              <h3 class="project-title">TaskFlow Agile Kanban Workspace</h3>
+              <p class="project-desc">Interactive task management board featuring HTML5 drag-and-drop, priority badge tagging, persistent browser state, and subtask progress trackers.</p>
+              <div class="project-links">
+                <button class="link-btn primary open-modal-btn" data-project="2">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> View Spec
+                </button>
+                <button class="link-btn secondary open-modal-btn" data-project="2">
+                  <i class="fa-solid fa-circle-info"></i> Details
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4: DevWeather Pro -->
+          <article class="project-card" data-category="interactive">
+            <div class="project-thumb">
+              <div class="project-mockup mockup-weather">
+                <div class="mockup-header">
+                  <span class="dot-sm"></span><span class="dot-sm"></span><span class="dot-sm"></span>
+                  <span class="mockup-title">skycast.io</span>
+                </div>
+                <div class="mockup-body weather-mock">
+                  <div class="weather-icon-sun"><i class="fa-solid fa-sun"></i></div>
+                  <div class="weather-temp">28°C</div>
+                  <small>Mumbai &bull; Sunny &amp; Crisp</small>
+                </div>
+              </div>
+              <div class="project-overlay">
+                <button class="btn btn-sm btn-light open-modal-btn" data-project="3">
+                  <i class="fa-solid fa-expand"></i> Quick Preview
+                </button>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-tags">
+                <span class="pill-tag">API Integration</span>
+                <span class="pill-tag">Async JS</span>
+                <span class="pill-tag">Geolocation</span>
+              </div>
+              <h3 class="project-title">SkyCast Weather &amp; Climate Intelligence</h3>
+              <p class="project-desc">Clean weather dashboard consuming OpenWeather APIs with 7-day forecasts, radar visualization, hourly temperature graphs, and responsive air quality cards.</p>
+              <div class="project-links">
+                <button class="link-btn primary open-modal-btn" data-project="3">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> View Spec
+                </button>
+                <button class="link-btn secondary open-modal-btn" data-project="3">
+                  <i class="fa-solid fa-circle-info"></i> Details
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="section-subtitle">Get In Touch</p>
+          <h2 class="section-title">Let's Build Something <span class="gradient-text">Extraordinary</span></h2>
+          <div class="title-underline"></div>
+          <p class="section-desc">Have a frontend internship opportunity, a freelance project, or just want to say hi? Drop me a message below!</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Information Side -->
+          <div class="contact-info-card">
+            <h3>Contact Information</h3>
+            <p>I am currently available for frontend developer internship roles, junior engineering positions, and collaborative projects.</p>
+
+            <div class="contact-methods">
+              <div class="method-item">
+                <div class="method-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div>
+                  <span class="method-title">Email Me</span>
+                  <a href="mailto:vrund.patel.dev@gmail.com" class="method-val">vrund.patel.dev@gmail.com</a>
+                </div>
+              </div>
+
+              <div class="method-item">
+                <div class="method-icon"><i class="fa-solid fa-phone"></i></div>
+                <div>
+                  <span class="method-title">Phone / WhatsApp</span>
+                  <a href="tel:+919876543210" class="method-val">+91 98765 43210</a>
+                </div>
+              </div>
+
+              <div class="method-item">
+                <div class="method-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div>
+                  <span class="method-title">Location</span>
+                  <span class="method-val">Gujarat, India (Open to Remote Globally)</span>
+                </div>
+              </div>
+
+              <div class="method-item">
+                <div class="method-icon status-online"><i class="fa-solid fa-circle-check"></i></div>
+                <div>
+                  <span class="method-title">Current Status</span>
+                  <span class="method-val text-success">Actively Interviewing for Internships</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-card-footer">
+              <p>Response Time: <strong>Within 24 Hours</strong></p>
+            </div>
+          </div>
+
+          <!-- Contact Form with Robust Validation -->
+          <div class="contact-form-container">
+            <form id="contact-form" class="contact-form" novalidate>
+              <div class="form-row">
+                <!-- Full Name Field -->
+                <div class="form-group">
+                  <label for="contact-name">Your Full Name <span class="required-star">*</span></label>
+                  <div class="input-wrap">
+                    <i class="fa-solid fa-user input-icon"></i>
+                    <input type="text" id="contact-name" name="name" placeholder="e.g. John Doe" autocomplete="name" required minlength="3">
+                  </div>
+                  <span class="error-msg" id="name-error">Please enter at least 3 characters.</span>
+                </div>
+
+                <!-- Email Address Field -->
+                <div class="form-group">
+                  <label for="contact-email">Your Email Address <span class="required-star">*</span></label>
+                  <div class="input-wrap">
+                    <i class="fa-solid fa-envelope input-icon"></i>
+                    <input type="email" id="contact-email" name="email" placeholder="e.g. john@example.com" autocomplete="email" required>
+                  </div>
+                  <span class="error-msg" id="email-error">Please enter a valid email address.</span>
+                </div>
+              </div>
+
+              <!-- Subject Field -->
+              <div class="form-group">
+                <label for="contact-subject">Subject <span class="required-star">*</span></label>
+                <div class="input-wrap">
+                  <i class="fa-solid fa-tag input-icon"></i>
+                  <input type="text" id="contact-subject" name="subject" placeholder="e.g. Frontend Internship Opportunity" required minlength="4">
+                </div>
+                <span class="error-msg" id="subject-error">Subject must be at least 4 characters long.</span>
+              </div>
+
+              <!-- Message Field -->
+              <div class="form-group">
+                <div class="label-with-counter">
+                  <label for="contact-message">Your Message <span class="required-star">*</span></label>
+                  <span class="char-counter"><span id="msg-char-count">0</span> / 500</span>
+                </div>
+                <div class="input-wrap textarea-wrap">
+                  <textarea id="contact-message" name="message" rows="5" placeholder="Tell me about your project, team, or opportunity..." required minlength="15" maxlength="500"></textarea>
+                </div>
+                <span class="error-msg" id="message-error">Message must be at least 15 characters long.</span>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" id="submit-btn" class="btn btn-primary btn-block">
+                <span class="btn-text">Send Message</span>
+                <i class="fa-solid fa-paper-plane btn-icon"></i>
+                <span class="btn-spinner hidden"><i class="fa-solid fa-spinner fa-spin"></i></span>
+              </button>
+
+              <!-- Form Status Banner -->
+              <div id="form-alert" class="form-alert hidden" role="alert"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Project Details Modal -->
+  <div id="project-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close dialog">&times;</button>
+      <div class="modal-header">
+        <span class="modal-category" id="modal-category">E-Commerce</span>
+        <h2 id="modal-title" class="modal-title">Project Name</h2>
+      </div>
+      <div class="modal-body">
+        <div class="modal-image-wrap" id="modal-image-wrap">
+          <!-- Dynamic visual preview -->
+        </div>
+        <div class="modal-details">
+          <h4>Overview &amp; Purpose</h4>
+          <p id="modal-description">Detailed description here.</p>
+          
+          <h4>Key Engineering Highlights</h4>
+          <ul id="modal-highlights" class="modal-list">
+            <!-- Dynamic highlights -->
+          </ul>
+
+          <h4>Tech Stack Utilized</h4>
+          <div class="modal-stack" id="modal-stack">
+            <!-- Dynamic stack tags -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#" id="modal-demo-link" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Project
+        </a>
+        <button class="btn btn-secondary" id="modal-close-action">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <a href="#hero" class="footer-logo">
+          &lt;Vrund<span class="logo-accent">.dev</span>/&gt;
+        </a>
+        <p>Crafting high-quality frontend experiences with modern web standards and design excellence.</p>
+      </div>
+
+      <div class="footer-nav">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-internship">
+        <h4>ShadowFox Track</h4>
+        <p>Completed for the ShadowFox Frontend Developer Internship track.</p>
+        <div class="footer-level-links">
+          <a href="../beginner/index.html" class="active">Beginner (Portfolio)</a>
+          <a href="../intermediate/index.html">Intermediate (Storefront)</a>
+          <a href="../advanced/index.html">Advanced (Enterprise SaaS)</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="container footer-bottom-flex">
+        <p>&copy; 2026 Vrund Patel. All rights reserved. Designed &amp; Developed with Clean HTML5, CSS3 &amp; JS.</p>
+        <a href="#hero" class="back-to-top" aria-label="Back to top">
+          <i class="fa-solid fa-chevron-up"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script File -->
+  <script src="script.js"></script>
+</body>
+</html>

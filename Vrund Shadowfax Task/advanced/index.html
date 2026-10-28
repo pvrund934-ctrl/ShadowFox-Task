@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PulseFlow AI - Enterprise Cloud Infrastructure & Autonomous Agent Operations Platform. Real-time telemetry, visual pipeline orchestration, ROI calculator, and security audit console.">
+  <meta name="author" content="Vrund Patel">
+  <title>PulseFlow AI | Enterprise Cloud &amp; Agent Operations Console</title>
+
+  <!-- Google Fonts: Space Grotesk + Plus Jakarta Sans + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="app-body">
+
+  <!-- Main Enterprise Layout Wrapper -->
+  <div class="app-layout">
+    
+    <!-- LEFT NAVIGATION SIDEBAR -->
+    <aside class="app-sidebar" id="app-sidebar">
+      <!-- Sidebar Header / Brand Logo -->
+      <div class="sidebar-header">
+        <a href="#overview" class="brand-link">
+          <div class="brand-icon-box">
+            <i class="fa-solid fa-network-wired"></i>
+          </div>
+          <div class="brand-text-wrap">
+            <span class="brand-title">PULSEFLOW</span>
+            <span class="brand-badge">ENTERPRISE AI</span>
+          </div>
+        </a>
+        <button class="sidebar-collapse-btn" id="sidebar-toggle-btn" aria-label="Toggle sidebar collapse">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+      </div>
+
+      <!-- Environment Selector Pill -->
+      <div class="env-selector-box">
+        <span class="env-dot"></span>
+        <select id="env-select" class="env-select" aria-label="Cloud Environment">
+          <option value="prod">production-cluster-us01</option>
+          <option value="staging">staging-cluster-eu02</option>
+          <option value="dev">sandbox-agent-dev</option>
+        </select>
+      </div>
+
+      <!-- Navigation Menu Items -->
+      <nav class="sidebar-nav">
+        <div class="nav-group-label">OPERATIONS &amp; TELEMETRY</div>
+        <button class="sidebar-nav-item active" data-view="overview">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Live Telemetry</span>
+          <span class="nav-tag tag-live">LIVE</span>
+        </button>
+        <button class="sidebar-nav-item" data-view="workflows">
+          <i class="fa-solid fa-diagram-project"></i>
+          <span>Agent Workflows</span>
+          <span class="nav-tag tag-count">4</span>
+        </button>
+        <button class="sidebar-nav-item" data-view="calculator">
+          <i class="fa-solid fa-calculator"></i>
+          <span>ROI &amp; Cost Optimizer</span>
+        </button>
+
+        <div class="nav-group-label">SECURITY &amp; COMPLIANCE</div>
+        <button class="sidebar-nav-item" data-view="audit">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>Security Audit Logs</span>
+        </button>
+        <button class="sidebar-nav-item" data-view="apikeys">
+          <i class="fa-solid fa-key"></i>
+          <span>API Keys &amp; Webhooks</span>
+        </button>
+
+        <div class="nav-group-label">DOCUMENTATION &amp; BRIEF</div>
+        <button class="sidebar-nav-item" id="open-brief-modal-btn">
+          <i class="fa-solid fa-file-contract"></i>
+          <span>Client Requirement Brief</span>
+        </button>
+      </nav>
+
+      <!-- Sidebar Footer (User Info & Status) -->
+      <div class="sidebar-footer">
+        <div class="user-profile-card">
+          <div class="user-avatar">SJ</div>
+          <div class="user-meta">
+            <strong>Sarah Jenkins</strong>
+            <small>VP Product &bull; Admin</small>
+          </div>
+          <button class="user-settings-btn" title="Settings"><i class="fa-solid fa-gear"></i></button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- RIGHT MAIN WORKSPACE -->
+    <div class="app-workspace">
+
+      <!-- TOP COMMAND BAR -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <button class="mobile-sidebar-toggle" id="mobile-sidebar-toggle">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          
+          <div class="breadcrumb-trail">
+            <span class="crumb-root">PulseFlow</span>
+            <span class="crumb-separator">/</span>
+            <span class="crumb-active" id="active-crumb-text">Live Telemetry &amp; Metrics</span>
+          </div>
+
+          <!-- Cluster Health Status Indicator -->
+          <div class="cluster-status-badge">
+            <span class="pulse-status-dot"></span>
+            <span>48/48 Nodes Operational &bull; 99.98% SLA</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Command Palette Launcher -->
+          <button class="command-palette-btn" id="command-palette-trigger">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Quick search or command...</span>
+            <kbd>Ctrl K</kbd>
+          </button>
+
+          <!-- Notification Bell -->
+          <button class="topbar-icon-btn" id="notif-btn" title="System Notifications">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notif-badge">3</span>
+          </button>
+
+          <!-- ShadowFox Track Switcher -->
+          <div class="track-switch-pill">
+            <span class="track-label">Track Level:</span>
+            <span class="track-val">Advanced</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- VIEW PANES CONTAINER -->
+      <main class="app-content-body">
+
+        <!-- =========================================================
+             SECTION 1: OVERVIEW & REAL-TIME TELEMETRY
+             ========================================================= -->
+        <section class="view-pane active" id="pane-overview">
+          <div class="pane-header">
+            <div>
+              <h1 class="pane-title">Cluster Telemetry &amp; Compute Performance</h1>
+              <p class="pane-subtitle">Live health status, throughput bandwidth, and autonomous agent latency metrics.</p>
+            </div>
+            <div class="pane-actions">
+              <button class="btn btn-sm btn-outline" id="refresh-telemetry-btn">
+                <i class="fa-solid fa-arrows-rotate"></i>
+                <span>Refresh Fleet</span>
+              </button>
+              <button class="btn btn-sm btn-primary" id="quick-deploy-agent-btn">
+                <i class="fa-solid fa-plus"></i>
+                <span>Deploy Agent Node</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 4 Core Metric KPI Cards -->
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-top">
+                <span class="metric-label">Active Compute Nodes</span>
+                <span class="metric-trend trend-up"><i class="fa-solid fa-arrow-up"></i> +12.4%</span>
+              </div>
+              <div class="metric-val-row">
+                <span class="metric-number" id="metric-nodes">48</span>
+                <span class="metric-unit">/ 64 max</span>
+              </div>
+              <div class="metric-progress-bar"><div class="metric-fill" style="width: 75%;"></div></div>
+              <small class="metric-sub">Across 4 global cloud regions</small>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-top">
+                <span class="metric-label">API Throughput (req/sec)</span>
+                <span class="metric-trend trend-up"><i class="fa-solid fa-arrow-up"></i> +8.6%</span>
+              </div>
+              <div class="metric-val-row">
+                <span class="metric-number" id="metric-throughput">18,420</span>
+                <span class="metric-unit">req/s</span>
+              </div>
+              <div class="metric-progress-bar"><div class="metric-fill" style="width: 82%;"></div></div>
+              <small class="metric-sub">Peak throughput reached 24.8k req/s</small>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-top">
+                <span class="metric-label">Avg Agent Latency</span>
+                <span class="metric-trend trend-down"><i class="fa-solid fa-arrow-down"></i> -18.2%</span>
+              </div>
+              <div class="metric-val-row">
+                <span class="metric-number" id="metric-latency">42.5</span>
+                <span class="metric-unit">ms</span>
+              </div>
+              <div class="metric-progress-bar"><div class="metric-fill" style="width: 28%; background: #10b981;"></div></div>
+              <small class="metric-sub">Target SLA: &lt; 80ms latency</small>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-top">
+                <span class="metric-label">Monthly Cloud Savings</span>
+                <span class="metric-trend trend-up"><i class="fa-solid fa-arrow-up"></i> 58%</span>
+              </div>
+              <div class="metric-val-row">
+                <span class="metric-number" id="metric-savings">$4,890</span>
+                <span class="metric-unit">saved</span>
+              </div>
+              <div class="metric-progress-bar"><div class="metric-fill" style="width: 65%; background: #06b6d4;"></div></div>
+              <small class="metric-sub">Compared to legacy hyperscaler baseline</small>
+            </div>
+          </div>
+
+          <!-- Interactive HTML5 Canvas Telemetry Chart Card -->
+          <div class="telemetry-chart-card">
+            <div class="chart-header">
+              <div class="chart-title-group">
+                <h3>Global Request Throughput &amp; Vector Index Load</h3>
+                <span class="chart-legend">
+                  <span class="legend-dot dot-cyan"></span> Ingress API Traffic
+                  <span class="legend-dot dot-purple"></span> Vector Embedding Queries
+                </span>
+              </div>
+              <!-- Interval Filter Buttons -->
+              <div class="chart-time-tabs">
+                <button class="time-tab-btn active" data-range="24h">24 Hours</button>
+                <button class="time-tab-btn" data-range="7d">7 Days</button>
+                <button class="time-tab-btn" data-range="30d">30 Days</button>
+              </div>
+            </div>
+
+            <div class="chart-canvas-wrapper">
+              <canvas id="telemetryCanvas" width="900" height="320"></canvas>
+              <div id="chart-tooltip" class="chart-tooltip hidden"></div>
+            </div>
+          </div>
+
+          <!-- Regional Fleet Nodes Table -->
+          <div class="fleet-grid-section">
+            <div class="section-sub-header">
+              <h3>Distributed Cloud Node Clusters</h3>
+              <span class="badge-pill">Global Mesh Active</span>
+            </div>
+            <div class="fleet-clusters-grid">
+              <div class="cluster-card">
+                <div class="cluster-header">
+                  <strong>us-east-virginia</strong>
+                  <span class="status-tag tag-healthy">Healthy</span>
+                </div>
+                <div class="cluster-specs">
+                  <span>16 Nodes</span> &bull; <span>CPU: 42%</span> &bull; <span>RAM: 58%</span>
+                </div>
+                <div class="cluster-bar"><div class="cbar-fill" style="width: 42%;"></div></div>
+              </div>
+
+              <div class="cluster-card">
+                <div class="cluster-header">
+                  <strong>eu-central-frankfurt</strong>
+                  <span class="status-tag tag-healthy">Healthy</span>
+                </div>
+                <div class="cluster-specs">
+                  <span>14 Nodes</span> &bull; <span>CPU: 38%</span> &bull; <span>RAM: 49%</span>
+                </div>
+                <div class="cluster-bar"><div class="cbar-fill" style="width: 38%;"></div></div>
+              </div>
+
+              <div class="cluster-card">
+                <div class="cluster-header">
+                  <strong>ap-south-mumbai</strong>
+                  <span class="status-tag tag-healthy">Healthy</span>
+                </div>
+                <div class="cluster-specs">
+                  <span>10 Nodes</span> &bull; <span>CPU: 51%</span> &bull; <span>RAM: 62%</span>
+                </div>
+                <div class="cluster-bar"><div class="cbar-fill" style="width: 51%;"></div></div>
+              </div>
+
+              <div class="cluster-card">
+                <div class="cluster-header">
+                  <strong>us-west-oregon</strong>
+                  <span class="status-tag tag-healthy">Healthy</span>
+                </div>
+                <div class="cluster-specs">
+                  <span>8 Nodes</span> &bull; <span>CPU: 29%</span> &bull; <span>RAM: 44%</span>
+                </div>
+                <div class="cluster-bar"><div class="cbar-fill" style="width: 29%;"></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =========================================================
+             SECTION 2: AI AGENTS & VISUAL WORKFLOW ORCHESTRATOR
+             ========================================================= -->
+        <section class="view-pane" id="pane-workflows">
+          <div class="pane-header">
+            <div>
+              <h1 class="pane-title">Autonomous Agent Workflow Pipelines</h1>
+              <p class="pane-subtitle">Visual multi-stage DAG orchestrator with real-time execution simulation and terminal logs.</p>
+            </div>
+            <div class="pane-actions">
+              <button class="btn btn-primary" id="run-pipeline-btn">
+                <i class="fa-solid fa-play"></i>
+                <span>Run Pipeline Simulation</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Visual Workflow DAG Pipeline -->
+          <div class="workflow-visual-card">
+            <div class="workflow-header-row">
+              <div class="wf-title-meta">
+                <span class="wf-badge">Pipeline #PL-784</span>
+                <h3>Enterprise Customer Intent &amp; Action Dispatcher</h3>
+              </div>
+              <div class="wf-status-indicator" id="wf-overall-status">
+                <span class="status-dot dot-idle"></span> Status: Ready
+              </div>
+            </div>
+
+            <!-- Visual Pipeline Stage Nodes -->
+            <div class="pipeline-stages-track">
+              <!-- Stage 1 -->
+              <div class="pipeline-node" id="node-stage-1">
+                <div class="node-icon-box"><i class="fa-solid fa-satellite-dish"></i></div>
+                <div class="node-meta">
+                  <span class="node-step">Stage 01</span>
+                  <h4>Data Ingestion</h4>
+                  <small>Kafka / Webhooks Stream</small>
+                </div>
+                <div class="node-progress-line"></div>
+                <span class="node-status-label" id="node-1-status">Idle</span>
+              </div>
+
+              <div class="pipeline-connector"><i class="fa-solid fa-angle-right"></i></div>
+
+              <!-- Stage 2 -->
+              <div class="pipeline-node" id="node-stage-2">
+                <div class="node-icon-box"><i class="fa-solid fa-cubes-stacked"></i></div>
+                <div class="node-meta">
+                  <span class="node-step">Stage 02</span>
+                  <h4>Vector Embedding</h4>
+                  <small>HNSW Similarity Index</small>
+                </div>
+                <div class="node-progress-line"></div>
+                <span class="node-status-label" id="node-2-status">Idle</span>
+              </div>
+
+              <div class="pipeline-connector"><i class="fa-solid fa-angle-right"></i></div>
+
+              <!-- Stage 3 -->
+              <div class="pipeline-node" id="node-stage-3">
+                <div class="node-icon-box"><i class="fa-solid fa-brain"></i></div>
+                <div class="node-meta">
+                  <span class="node-step">Stage 03</span>
+                  <h4>LLM Agent Reasoning</h4>
+                  <small>Chain-of-Thought &amp; Guardrails</small>
+                </div>
+                <div class="node-progress-line"></div>
+                <span class="node-status-label" id="node-3-status">Idle</span>
+              </div>
+
+              <div class="pipeline-connector"><i class="fa-solid fa-angle-right"></i></div>
+
+              <!-- Stage 4 -->
+              <div class="pipeline-node" id="node-stage-4">
+                <div class="node-icon-box"><i class="fa-solid fa-bolt"></i></div>
+                <div class="node-meta">
+                  <span class="node-step">Stage 04</span>
+                  <h4>Execution &amp; Webhook</h4>
+                  <small>DB Write / Slack Dispatch</small>
+                </div>
+                <div class="node-progress-line"></div>
+                <span class="node-status-label" id="node-4-status">Idle</span>
+              </div>
+            </div>
+
+            <!-- Real-Time Execution Console Log Window -->
+            <div class="pipeline-terminal">
+              <div class="terminal-header">
+                <div class="terminal-dots">
+                  <span class="tdot dot-red"></span>
+                  <span class="tdot dot-yellow"></span>
+                  <span class="tdot dot-green"></span>
+                </div>
+                <span class="terminal-title">pulseflow-orchestrator-stdout.log</span>
+                <button class="clear-terminal-btn" id="clear-logs-btn">Clear Logs</button>
+              </div>
+              <div class="terminal-body" id="pipeline-terminal-body">
+                <div class="log-line text-muted">[SYSTEM] Pipeline initialized in standby mode. Ready to ingest events.</div>
+                <div class="log-line text-muted">[INFO] All 4 agent execution microservices bound to port :8080.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Fleet of Autonomous Agents -->
+          <div class="agent-fleet-section">
+            <div class="section-sub-header">
+              <h3>Active Autonomous Agent Fleet</h3>
+              <span class="badge-pill">4 Agents Running</span>
+            </div>
+            
+            <div class="agents-table-card">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Agent Name</th>
+                    <th>Model Engine</th>
+                    <th>Memory Footprint</th>
+                    <th>Success Rate</th>
+                    <th>State</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="agent-table-body">
+                  <tr>
+                    <td>
+                      <div class="agent-name-cell">
+                        <i class="fa-solid fa-robot"></i>
+                        <div>
+                          <strong>PulseSentinel</strong>
+                          <small>Infrastructure Outlier Detector</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="code-pill">gemini-1.5-pro</span></td>
+                    <td>248 MB</td>
+                    <td><span class="text-success">99.8%</span></td>
+                    <td><span class="status-badge active" id="agent-badge-1">Active</span></td>
+                    <td>
+                      <button class="btn-table-action" onclick="toggleAgentState(1)">Toggle</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="agent-name-cell">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <div>
+                          <strong>CostOptimizer</strong>
+                          <small>Auto Cloud Spot Instance Arbiter</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="code-pill">claude-3.5-sonnet</span></td>
+                    <td>182 MB</td>
+                    <td><span class="text-success">99.4%</span></td>
+                    <td><span class="status-badge active" id="agent-badge-2">Active</span></td>
+                    <td>
+                      <button class="btn-table-action" onclick="toggleAgentState(2)">Toggle</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="agent-name-cell">
+                        <i class="fa-solid fa-shield-virus"></i>
+                        <div>
+                          <strong>SecuritySheriff</strong>
+                          <small>Vulnerability &amp; IAM Access Auditor</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="code-pill">gpt-4o-mini</span></td>
+                    <td>130 MB</td>
+                    <td><span class="text-success">100.0%</span></td>
+                    <td><span class="status-badge active" id="agent-badge-3">Active</span></td>
+                    <td>
+                      <button class="btn-table-action" onclick="toggleAgentState(3)">Toggle</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="agent-name-cell">
+                        <i class="fa-solid fa-comments"></i>
+                        <div>
+                          <strong>SupportSynthesizer</strong>
+                          <small>Tier-1 Escalation Triage Bot</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="code-pill">gemini-flash</span></td>
+                    <td>94 MB</td>
+                    <td><span class="text-success">98.9%</span></td>
+                    <td><span class="status-badge active" id="agent-badge-4">Active</span></td>
+                    <td>
+                      <button class="btn-table-action" onclick="toggleAgentState(4)">Toggle</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- =========================================================
+             SECTION 3: CLOUD COMPUTE & ROI COST CALCULATOR
+             ========================================================= -->
+        <section class="view-pane" id="pane-calculator">
+          <div class="pane-header">
+            <div>
+              <h1 class="pane-title">Cloud Infrastructure &amp; ROI Calculator</h1>
+              <p class="pane-subtitle">Estimate enterprise compute costs and project savings against traditional hyperscaler clouds.</p>
+            </div>
+            <div class="pane-actions">
+              <button class="btn btn-outline" id="reset-calculator-btn">
+                <i class="fa-solid fa-rotate-left"></i>
+                <span>Reset Sliders</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="calculator-grid">
+            <!-- Sliders Configuration Form -->
+            <div class="calculator-controls-card">
+              <h3>Infrastructure Capacity Sliders</h3>
+              <p class="calc-hint">Adjust your enterprise requirements to see instant cost and efficiency models.</p>
+
+              <!-- Slider 1: Monthly API Requests -->
+              <div class="calc-slider-group">
+                <div class="slider-label-row">
+                  <label for="slider-api">Monthly API Invocations</label>
+                  <strong class="slider-val" id="val-api">5,000,000</strong>
+                </div>
+                <input type="range" id="slider-api" min="100000" max="50000000" step="500000" value="5000000">
+                <div class="slider-scale">
+                  <span>100K</span>
+                  <span>10M</span>
+                  <span>25M</span>
+                  <span>50M</span>
+                </div>
+              </div>
+
+              <!-- Slider 2: Compute Node Instances -->
+              <div class="calc-slider-group">
+                <div class="slider-label-row">
+                  <label for="slider-nodes">Dedicated Compute Nodes</label>
+                  <strong class="slider-val" id="val-nodes">16 Nodes</strong>
+                </div>
+                <input type="range" id="slider-nodes" min="1" max="64" step="1" value="16">
+                <div class="slider-scale">
+                  <span>1 Node</span>
+                  <span>16 Nodes</span>
+                  <span>32 Nodes</span>
+                  <span>64 Nodes</span>
+                </div>
+              </div>
+
+              <!-- Slider 3: Vector Storage -->
+              <div class="calc-slider-group">
+                <div class="slider-label-row">
+                  <label for="slider-storage">Vector Database Storage (HNSW)</label>
+                  <strong class="slider-val" id="val-storage">250 GB</strong>
+                </div>
+                <input type="range" id="slider-storage" min="10" max="2000" step="50" value="250">
+                <div class="slider-scale">
+                  <span>10 GB</span>
+                  <span>500 GB</span>
+                  <span>1,000 GB</span>
+                  <span>2,000 GB</span>
+                </div>
+              </div>
+
+              <div class="calc-feature-list">
+                <div class="feat-check"><i class="fa-solid fa-check"></i> Includes Global Anycast Latency Routing</div>
+                <div class="feat-check"><i class="fa-solid fa-check"></i> SOC-2 Type II Certified Compliance</div>
+                <div class="feat-check"><i class="fa-solid fa-check"></i> 99.98% High-Availability Uptime SLA</div>
+              </div>
+            </div>
+
+            <!-- Cost Comparison & ROI Results Card -->
+            <div class="calculator-results-card">
+              <div class="recommended-tier-banner">
+                <span class="tier-eyebrow">Recommended Architecture</span>
+                <h3 id="recommended-tier-name">Growth Production Fleet</h3>
+              </div>
+
+              <div class="cost-comparison-box">
+                <div class="cost-col legacy">
+                  <span class="cost-label">Legacy Cloud (AWS / GCP)</span>
+                  <div class="cost-amount" id="legacy-cost-val">$6,480</div>
+                  <small>Standard VM + egress markups</small>
+                </div>
+
+                <div class="cost-divider-vs">VS</div>
+
+                <div class="cost-col pulseflow">
+                  <span class="cost-label">PulseFlow Optimized</span>
+                  <div class="cost-amount text-success" id="pulseflow-cost-val">$2,640</div>
+                  <small>Unified bare-metal agent mesh</small>
+                </div>
+              </div>
+
+              <!-- Savings Banner -->
+              <div class="savings-callout">
+                <div class="savings-icon"><i class="fa-solid fa-piggy-bank"></i></div>
+                <div>
+                  <span class="savings-title">Estimated Monthly Savings</span>
+                  <strong class="savings-val" id="net-savings-val">$3,840 / month</strong>
+                  <small class="savings-percentage" id="savings-percent-val">(59.3% reduction in cloud compute spend)</small>
+                </div>
+              </div>
+
+              <button class="btn btn-primary btn-block" id="quote-modal-btn">
+                <span>Lock In This Enterprise Tier</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- =========================================================
+             SECTION 4: SECURITY AUDIT LOGS & TEAM MANAGEMENT
+             ========================================================= -->
+        <section class="view-pane" id="pane-audit">
+          <div class="pane-header">
+            <div>
+              <h1 class="pane-title">Security Audit Log &amp; Governance</h1>
+              <p class="pane-subtitle">Immutable compliance records, role-based access history, and team member provisioning.</p>
+            </div>
+            <div class="pane-actions">
+              <button class="btn btn-outline" id="export-csv-btn">
+                <i class="fa-solid fa-file-csv"></i>
+                <span>Export Audit CSV</span>
+              </button>
+              <button class="btn btn-primary" id="invite-member-btn">
+                <i class="fa-solid fa-user-plus"></i>
+                <span>Invite Member</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Filter Bar -->
+          <div class="audit-filter-bar">
+            <div class="audit-search-input-wrap">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="audit-search-input" placeholder="Search by user, action, or IP address...">
+            </div>
+            <select id="audit-type-filter" class="audit-select">
+              <option value="all">All Action Types</option>
+              <option value="DEPLOY">Deployments</option>
+              <option value="AUTH">Authentication</option>
+              <option value="POLICY">Policy Updates</option>
+              <option value="ALERT">Alerts</option>
+            </select>
+          </div>
+
+          <!-- Audit Table -->
+          <div class="table-card">
+            <table class="data-table" id="audit-table">
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Actor / User</th>
+                  <th>Action Type</th>
+                  <th>Resource Target</th>
+                  <th>Origin IP</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="audit-tbody">
+                <!-- Injected via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- =========================================================
+             SECTION 5: API KEYS & WEBHOOK DIAGNOSTIC PING
+             ========================================================= -->
+        <section class="view-pane" id="pane-apikeys">
+          <div class="pane-header">
+            <div>
+              <h1 class="pane-title">API Tokens &amp; Webhook Diagnostics</h1>
+              <p class="pane-subtitle">Manage scoped authorization tokens and verify live webhook endpoint responsiveness.</p>
+            </div>
+            <div class="pane-actions">
+              <button class="btn btn-primary" id="create-api-key-btn">
+                <i class="fa-solid fa-key"></i>
+                <span>Generate New API Key</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- API Keys List -->
+          <div class="api-keys-card">
+            <div class="section-sub-header">
+              <h3>Active Authorization Keys</h3>
+              <span class="badge-pill" id="key-count-badge">2 Keys Active</span>
+            </div>
+            <div class="api-keys-list" id="api-keys-list">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Webhook Diagnostic Ping Tool -->
+          <div class="webhook-tester-card">
+            <div class="section-sub-header">
+              <h3>Webhook Dispatch &amp; Latency Simulator</h3>
+              <span class="badge-pill">Health Diagnostic</span>
+            </div>
+            <p class="text-muted">Test real-time event delivery and verify SSL handshake latency to your custom endpoint.</p>
+
+            <form id="webhook-ping-form" class="webhook-form">
+              <div class="form-row">
+                <div class="form-group flex-2">
+                  <label for="webhook-url">Target Webhook Endpoint URL</label>
+                  <input type="url" id="webhook-url" value="https://api.clientcorp.internal/v1/telemetry-hook" required>
+                </div>
+                <div class="form-group flex-1">
+                  <label for="webhook-event">Event Payload Trigger</label>
+                  <select id="webhook-event" class="audit-select">
+                    <option value="agent.anomaly.detected">agent.anomaly.detected</option>
+                    <option value="node.scale.up">node.scale.up</option>
+                    <option value="workflow.completed">workflow.completed</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" id="ping-btn">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Send Test Diagnostic Ping</span>
+              </button>
+            </form>
+
+            <!-- Diagnostic Response Box -->
+            <div class="diagnostic-output-box hidden" id="diagnostic-output-box">
+              <div class="diagnostic-header">
+                <span class="status-badge active"><i class="fa-solid fa-circle-check"></i> HTTP 200 OK</span>
+                <span class="latency-stat">Roundtrip Ping: <strong id="ping-latency">38ms</strong></span>
+              </div>
+              <pre class="diagnostic-json"><code id="diagnostic-payload"></code></pre>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       MODALS: COMMAND PALETTE, REQUIREMENT BRIEF, INVITE, ETC.
+       ========================================================= -->
+
+  <!-- 1. Command Palette Modal (Ctrl + K) -->
+  <div class="modal-overlay hidden" id="command-palette-modal">
+    <div class="command-palette-card">
+      <div class="palette-search-wrap">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="palette-input" placeholder="Type a view or action (e.g. 'telemetry', 'workflows', 'calculator', 'keys')...">
+        <kbd class="palette-esc">ESC</kbd>
+      </div>
+      <div class="palette-results-list" id="palette-results-list">
+        <div class="palette-item active" data-action="overview">
+          <i class="fa-solid fa-chart-line"></i>
+          <div>
+            <strong>Go to Live Telemetry</strong>
+            <small>Inspect global node fleet and real-time request charts</small>
+          </div>
+          <span class="palette-shortcut">Jump</span>
+        </div>
+        <div class="palette-item" data-action="workflows">
+          <i class="fa-solid fa-diagram-project"></i>
+          <div>
+            <strong>Go to Agent Workflows</strong>
+            <small>Run pipeline simulation and inspect autonomous fleet</small>
+          </div>
+          <span class="palette-shortcut">Jump</span>
+        </div>
+        <div class="palette-item" data-action="calculator">
+          <i class="fa-solid fa-calculator"></i>
+          <div>
+            <strong>Go to ROI &amp; Cost Optimizer</strong>
+            <small>Calculate enterprise savings vs AWS/GCP</small>
+          </div>
+          <span class="palette-shortcut">Jump</span>
+        </div>
+        <div class="palette-item" data-action="audit">
+          <i class="fa-solid fa-shield-halved"></i>
+          <div>
+            <strong>Go to Security Audit Logs</strong>
+            <small>Search compliance records and export CSV</small>
+          </div>
+          <span class="palette-shortcut">Jump</span>
+        </div>
+        <div class="palette-item" data-action="apikeys">
+          <i class="fa-solid fa-key"></i>
+          <div>
+            <strong>Go to API Keys &amp; Webhooks</strong>
+            <small>Generate authorization tokens and test ping</small>
+          </div>
+          <span class="palette-shortcut">Jump</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Client Requirement Brief Viewer Modal -->
+  <div class="modal-overlay hidden" id="brief-modal">
+    <div class="modal-card modal-card-large">
+      <button class="modal-close-btn" id="close-brief-btn">&times;</button>
+      <div class="modal-header">
+        <span class="modal-badge-blue">Client Specification</span>
+        <h2>Client Requirement Brief: PulseFlow Technologies Inc.</h2>
+        <p class="text-muted">Document Version: 2.4 Approved &bull; Assigned Engineer: Vrund Patel</p>
+      </div>
+      <div class="modal-scroll-body">
+        <h4>1. Business Objective</h4>
+        <p>
+          PulseFlow Technologies requested a high-performance, single-page enterprise web console to eliminate fragmented CLI tools and provide real-time compute telemetry, visual AI agent workflow orchestration, infrastructure ROI estimation, and immutable security audit reporting.
+        </p>
+
+        <h4>2. Mandatory Specifications Delivered</h4>
+        <ul class="brief-deliverable-list">
+          <li><strong>Real-time Telemetry:</strong> HTML5 Canvas curve chart with 24H/7D/30D time filters and hover inspection.</li>
+          <li><strong>Visual DAG Orchestrator:</strong> 4-stage pipeline with animated simulation and live streaming terminal output.</li>
+          <li><strong>ROI Cost Calculator:</strong> Dynamic capacity sliders computing monthly savings against legacy cloud baselines.</li>
+          <li><strong>Audit Governance:</strong> Filterable table with immediate CSV compilation &amp; download.</li>
+          <li><strong>Security &amp; Diagnostics:</strong> Scoped API token generator and real-time webhook ping tester.</li>
+        </ul>
+
+        <h4>3. Frontend Architectural Principles</h4>
+        <p>
+          Built strictly adhering to the ShadowFox Frontend Developer track requirements: pure semantic HTML5, zero framework runtime overhead, accessible ARIA labeling, responsive layouts, and robust client-side validation.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="brief-modal-close-action">Close Brief</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Invite Member Modal -->
+  <div class="modal-overlay hidden" id="invite-modal">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="close-invite-btn">&times;</button>
+      <div class="modal-header">
+        <h2>Provision New Team Member</h2>
+        <p class="text-muted">Send an authenticated invite link with designated role permissions.</p>
+      </div>
+      <form id="invite-form" novalidate>
+        <div class="form-group">
+          <label for="invite-name">Full Name *</label>
+          <input type="text" id="invite-name" placeholder="e.g. Alex Rivera" required>
+        </div>
+        <div class="form-group">
+          <label for="invite-email">Enterprise Email Address *</label>
+          <input type="email" id="invite-email" placeholder="alex.rivera@pulseflow.io" required>
+        </div>
+        <div class="form-group">
+          <label for="invite-role">Assigned Authorization Role</label>
+          <select id="invite-role" class="audit-select">
+            <option value="Developer">Developer (Workflows &amp; Telemetry)</option>
+            <option value="Admin">Administrator (Full Access &amp; Keys)</option>
+            <option value="Auditor">Compliance Auditor (Read-Only Logs)</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Send Authenticated Invitation</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 4. Generate API Key Modal -->
+  <div class="modal-overlay hidden" id="key-modal">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="close-key-btn">&times;</button>
+      <div class="modal-header">
+        <h2>Generate Scoped API Token</h2>
+        <p class="text-muted">Create a secret authentication token for programmatic microservice access.</p>
+      </div>
+      <form id="create-key-form">
+        <div class="form-group">
+          <label for="key-name">Token Identifier Name *</label>
+          <input type="text" id="key-name" placeholder="e.g. Prod-Worker-Cluster-04" required>
+        </div>
+        <div class="form-group">
+          <label for="key-scope">Scope Permissions</label>
+          <select id="key-scope" class="audit-select">
+            <option value="telemetry:read,workflow:execute">Telemetry Read + Workflow Execute</option>
+            <option value="full:admin">Full Administrative Access</option>
+            <option value="telemetry:read">Telemetry Read-Only</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Generate Key</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Script File -->
+  <script src="script.js"></script>
+</body>
+</html>
